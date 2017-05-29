@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * main module files
+ */
+
+define('ISLANDORA_USER_NAMESPACES_FIELD_NAME', 'field_namespace');
+
+/**
+ * 
+ * @param type $user
+ * @return array
+ */
+function get_user_namespaces($uid) {
+  $account     = user_load($uid);
+  $field_name  = ISLANDORA_USER_NAMESPACES_FIELD_NAME;
+  $field_items = field_get_items('user', $account, $field_name);
+
+  if (!$field_items) {
+    return array();
+  }
+  $namespaces = array();
+  foreach ($field_items as $item) {
+    $namespaces[] = $item['safe_value'];
+  }
+  return $namespaces;
+}
