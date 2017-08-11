@@ -35,6 +35,6 @@ function islandora_user_namespaces_install() {
  * 
  */
 function islandora_user_namespaces_uninstall() {
-  field_delete_field(ISLANDORA_USER_NAMESPACES_FIELD_NAME);
+  field_delete_field('field_namespace');
   field_purge_batch(1);
 }
